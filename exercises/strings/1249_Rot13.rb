@@ -1,3 +1,6 @@
+# Exercise
+# https://www.urionlinejudge.com.br/judge/pt/problems/view/1249
+
 def ask_for_message
   puts "Hello hunny bunny! Type the message you wanna to be coded:"
   secret_message = gets.strip
