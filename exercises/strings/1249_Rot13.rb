@@ -47,15 +47,3 @@ range_words_upcase = "A".."Z"
 secret_message = ask_for_message
 result = code_message secret_message
 result.each { |result| print result }
-
-
-# def encontra_jogador(mapa)
-#     caracter_do_heroi = "H"
-#     mapa.each_with_index do |linha_atual, linha|
-#         coluna_do_heroi = linha_atual.index caracter_do_heroi
-#         if coluna_do_heroi
-#             return [linha, coluna_do_heroi]
-#         end
-#     end
-#     # não achei!
-# end
