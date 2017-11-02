@@ -3,35 +3,48 @@
 
 def ask_for_message
   puts "Hello hunny bunny! Type the message you wanna to be coded:"
-  secret_message = gets(nil).strip
+  secret_messages = []
+  loop do
+    secret_message = gets.strip
+    break if secret_message == "EOF"
+    secret_messages << secret_message
+  end
+  secret_messages
 end
 
 def print_result(result)
-  result.each { |r| print r }
-  puts
+  result.each { |r| puts r }
 end
 
 def code_letter(letter)
-  has_letter_downcase = @alphabet_upsidedown.key?(letter)
-  has_letter_upcase = @alphabet_upsidedown.key?(letter.downcase)
+  alphabet = Array("a".."z")
+  alphabet_upsidedown = alphabet.zip(alphabet.rotate(13)).to_h
+
+  has_letter_downcase = alphabet_upsidedown.key?(letter)
+  has_letter_upcase = alphabet_upsidedown.key?(letter.downcase)
+
   if has_letter_downcase
-    @alphabet_upsidedown[letter]
+    alphabet_upsidedown[letter]
   elsif has_letter_upcase
-    @alphabet_upsidedown[letter.downcase].upcase
+    alphabet_upsidedown[letter.downcase].upcase
   else
     letter
   end
 end
 
-def code_message(message)
+def code_messages(messages)
   coded_message = []
-  message.chars.each { |letter_message| coded_message << code_letter(letter_message) }
+  message_coded = ""
+  messages.each do |message|
+    message.chars.each do |letter|
+      message_coded += code_letter(letter)
+    end
+    coded_message << message_coded
+    message_coded = ""
+  end
   coded_message
 end
 
-@alphabet = Array("a".."z")
-@alphabet_upsidedown = @alphabet.zip(@alphabet.rotate(13)).to_h
-
-secret_message = ask_for_message
-result = code_message secret_message
+secret_messages = ask_for_message
+result = code_messages secret_messages
 print_result result
