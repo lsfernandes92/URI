@@ -2,7 +2,6 @@
 # https://www.urionlinejudge.com.br/judge/pt/problems/view/1249
 
 def ask_for_message
-  puts "Hello hunny bunny! Type the message you wanna to be coded:"
   secret_message = gets(nil).strip
 end
 
@@ -29,7 +28,7 @@ end
 def code_message(message)
   coded_message = []
   message.each { |value| coded_message << code_letter(test_case_line) }
-  coded_message[3].size
+  coded_message
 end
 
 secret_message = ask_for_message
